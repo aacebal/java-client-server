@@ -18,6 +18,14 @@ public class Main {
                     new InputStreamReader(socket.getInputStream()));
             PrintWriter output = new PrintWriter(socket.getOutputStream(), true);
 
+            while(true) {
+                String echoString = input.readLine();
+                if (echoString.equals("exit")) {
+                    break;
+                }
+                output.println("Echo from server: " + echoString);
+            }
+
         } catch(IOException e) {
             e.printStackTrace();
         }
