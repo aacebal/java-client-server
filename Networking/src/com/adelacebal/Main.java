@@ -9,9 +9,12 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-            URI uri = new URI("db://username:password@myserver.com:5000/catalogue/phones?os=android#samsung");
+            URI baseUri = new URI("http://username:password@myserver.com:5000");
+            URI uri = new URI("/catalogue/phones?os=android#samsung");
+            URI resolvedUri = baseUri.resolve(uri);
 
-            URL url = uri.toURL();
+//            URI uri = new URI("http://username:password@myserver.com:5000/catalogue/phones?os=android#samsung");
+            URL url = resolvedUri.toURL();
             System.out.println("URL = " + url);
 
 //            URI uri = new URI("hello");
